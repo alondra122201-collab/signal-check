@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#080810!important">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="dark only">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Signal Check">
+<meta name="theme-color" content="#080810">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Signal Check</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{background:#080810!important;color:#fff!important;font-family:'Courier New',monospace;min-height:100vh;overflow-x:hidden}
+  body{padding:16px 14px 32px}  /* base - overridden by safe area above */
+
+  .header{text-align:center;margin-bottom:20px;padding-top:8px}
+  .header h1{font-size:16px;letter-spacing:4px;color:#00d4ff;margin-bottom:2px}
+  .header p{font-size:8px;letter-spacing:2px;color:#475569}
+
+
+  /* PWA SAFE AREAS & SPLASH */
+  body {
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+
+  /* SPLASH SCREEN */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: #080810;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.4s ease;
+  }
+  #splash.hide { opacity: 0; pointer-events: none; }
+  #splash svg { width: 96px; height: 96px; margin-bottom: 20px; animation: pulse 1.5s ease-in-out infinite; }
+  #splash h2 { font-size: 18px; letter-spacing: 5px; color: #00d4ff; margin-bottom: 6px; font-family: 'Courier New', monospace; }
+  #splash p { font-size: 9px; letter-spacing: 3px; color: #334155; font-family: 'Courier New', monospace; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  /* STRATEGY TOGGLE */
+  .strategy-toggle{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:20px}
+  .strat-btn{padding:14px 6px;border-radius:8px;border:2px solid #374151;background:#111827;color:#94a3b8;font-family:inherit;font-size:10px;letter-spacing:2px;font-weight:900;cursor:pointer;transition:all .2s;text-align:center}
+  .strat-btn.active-tc{background:#0c1a2e;border-color:#00d4ff;color:#00d4ff}
+  .strat-btn.active-bb{background:#1a0c2e;border-color:#a78bfa;color:#a78bfa}
+
+  /* FORM */
+  .form-section{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:14px;margin-bottom:12px}
+  .section-label{font-size:8px;letter-spacing:3px;color:#475569;margin-bottom:12px}
+
+  .field{margin-bottom:12px}
+  .field:last-child{margin-bottom:0}
+  .field label{display:block;font-size:8px;letter-spacing:2px;color:#64748b;margin-bottom:5px}
+
+  /* ASSET GRID */
+  .asset-grid{display:grid;gap:5px}
+  .asset-grid.tc{grid-template-columns:repeat(3,1fr)}
+  .asset-grid.bb{grid-template-columns:repeat(4,1fr)}
+  .asset-btn{padding:10px 4px;border-radius:6px;border:1px solid #1e293b;background:#0d1117;color:#64748b;font-family:inherit;font-size:10px;font-weight:900;cursor:pointer;transition:all .15s;text-align:center;letter-spacing:1px}
+  .asset-btn.selected{background:#0c1a2e;border-color:#00d4ff;color:#00d4ff}
+
+  /* DIRECTION */
+  .dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .dir-btn{padding:12px;border-radius:6px;border:2px solid #1e293b;background:#0d1117;color:#64748b;font-family:inherit;font-size:11px;font-weight:900;cursor:pointer;transition:all .15s;text-align:center;letter-spacing:2px}
+  .dir-btn.long.selected{background:#052e16;border-color:#16a34a;color:#00c853}
+  .dir-btn.short.selected{background:#2d0a0a;border-color:#dc2626;color:#ff3d57}
+
+  /* TOGGLE ROWS */
+  .toggle-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .toggle-btn{padding:10px 4px;border-radius:6px;border:1px solid #1e293b;background:#0d1117;color:#64748b;font-family:inherit;font-size:10px;font-weight:900;cursor:pointer;transition:all .15s;text-align:center;letter-spacing:1px}
+  .toggle-btn.above.selected{background:#0c1a2e;border-color:#00d4ff;color:#00d4ff}
+  .toggle-btn.below.selected{background:#2d0a0a;border-color:#dc2626;color:#ff3d57}
+  .toggle-btn.broke.selected{background:#2d0a0a;border-color:#dc2626;color:#ff3d57}
+  .toggle-btn.inside.selected{background:#0c1a2e;border-color:#475569;color:#94a3b8}
+
+  /* NUMBER INPUTS */
+  .num-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .num-field{display:flex;flex-direction:column;gap:4px}
+  .num-field label{font-size:8px;letter-spacing:2px;color:#64748b}
+  .num-input{background:#0d1117;border:1px solid #1e293b;border-radius:6px;padding:10px;color:#fff;font-family:inherit;font-size:14px;text-align:center;width:100%;transition:border-color .2s;-webkit-appearance:none}
+  .num-input:focus{border-color:#00d4ff;outline:none}
+  .num-input::placeholder{color:#334155}
+
+  /* PREVIEW */
+  .preview-box{background:#0d1117;border:1px solid #1e293b;border-radius:10px;padding:14px;margin-bottom:12px;min-height:60px}
+  .preview-label{font-size:8px;letter-spacing:3px;color:#475569;margin-bottom:8px}
+  .preview-text{font-size:12px;color:#e2e8f0;line-height:1.8;word-break:break-word}
+  .preview-text.ready{color:#ffffff}
+  .preview-placeholder{font-size:11px;color:#334155;font-style:italic}
+
+  /* COPY BUTTON */
+  .copy-btn{width:100%;padding:16px;border:none;border-radius:10px;background:#00d4ff;color:#080810;font-family:inherit;font-size:12px;font-weight:900;letter-spacing:3px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+  .copy-btn:active{transform:scale(0.98)}
+  .copy-btn.copied{background:#00c853}
+  .copy-btn:disabled{background:#1e293b;color:#475569;cursor:not-allowed}
+
+  /* RESET */
+  .reset-btn{width:100%;padding:10px;border:1px solid #1e293b;border-radius:8px;background:transparent;color:#475569;font-family:inherit;font-size:9px;letter-spacing:2px;cursor:pointer;margin-top:8px;transition:all .2s}
+  .reset-btn:hover{border-color:#374151;color:#64748b}
+
+  /* FIELD LABELS for strategy specific */
+  .field-hint{font-size:8px;color:#334155;margin-top:3px;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <rect width="512" height="512" rx="112" fill="#0d1117"/>
+    <polygon points="295,72 172,272 252,272 218,440 342,228 258,228" fill="#00d4ff"/>
+    <polygon points="295,72 172,272 252,272 218,440 342,228 258,228" fill="none" stroke="#00d4ff" stroke-width="12" stroke-linejoin="round" opacity="0.35"/>
+  </svg>
+  <h2>SIGNAL CHECK</h2>
+  <p>LOADING...</p>
+</div>
+
+<div class="header">
+  <h1>⚡ SIGNAL CHECK</h1>
+  <p>BUILD · COPY · PASTE INTO CLAUDE</p>
+</div>
+
+<!-- STRATEGY SELECT -->
+<div class="strategy-toggle">
+  <button class="strat-btn" id="btn-tc" onclick="setStrategy('TC')">
+    📈 TRIPLE CONFIRM<br><span style="font-size:8px;font-weight:400;letter-spacing:1px">BTC ETH AVAX ADA NEAR LTC</span>
+  </button>
+  <button class="strat-btn" id="btn-bb" onclick="setStrategy('BB')">
+    📊 BB SQUEEZE<br><span style="font-size:8px;font-weight:400;letter-spacing:1px">SOL LINK XRP DOGE</span>
+  </button>
+</div>
+
+<!-- MAIN FORM -->
+<div class="form-section">
+  <div class="section-label">STEP 1 — ASSET & DIRECTION</div>
+
+  <!-- ASSET -->
+  <div class="field">
+    <label>ASSET</label>
+    <div class="asset-grid tc" id="asset-grid"></div>
+  </div>
+
+  <!-- DIRECTION -->
+  <div class="field">
+    <label>DIRECTION</label>
+    <div class="dir-grid">
+      <button class="dir-btn long" onclick="setDir('LONG')">▲ LONG</button>
+      <button class="dir-btn short" onclick="setDir('SHORT')">▼ SHORT</button>
+    </div>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="section-label">STEP 2 — CHART READINGS</div>
+
+  <!-- EMA -->
+  <div class="field">
+    <label>4H EMA 21 — LAST CANDLE IS...</label>
+    <div class="toggle-row">
+      <button class="toggle-btn above" onclick="setEma('above')">ABOVE LINE</button>
+      <button class="toggle-btn below" onclick="setEma('below')">BELOW LINE</button>
+    </div>
+  </div>
+
+  <!-- MACD / BB -->
+  <div class="field" id="field-mid">
+    <label id="mid-label">1H MACD — BLUE LINE IS...</label>
+    <div class="toggle-row" id="mid-toggle">
+      <button class="toggle-btn above" onclick="setMid('above')" id="mid-a">ABOVE ORANGE</button>
+      <button class="toggle-btn below" onclick="setMid('below')" id="mid-b">BELOW ORANGE</button>
+    </div>
+    <div class="field-hint" id="mid-hint"></div>
+  </div>
+
+  <!-- RSI + PRICE -->
+  <div class="num-grid">
+    <div class="num-field">
+      <label>RSI (PURPLE #)</label>
+      <input class="num-input" type="number" id="rsi-input" placeholder="0.00" step="0.01" oninput="buildPreview()">
+    </div>
+    <div class="num-field">
+      <label>CURRENT PRICE $</label>
+      <input class="num-input" type="number" id="price-input" placeholder="0.00" step="0.0001" oninput="buildPreview()">
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW -->
+<div class="preview-box">
+  <div class="preview-label">PREVIEW — YOUR MESSAGE TO CLAUDE</div>
+  <div id="preview-content"><span class="preview-placeholder">Fill in the fields above...</span></div>
+</div>
+
+<!-- COPY -->
+<button class="copy-btn" id="copy-btn" onclick="copyMessage()" disabled>COPY MESSAGE</button>
+<button class="reset-btn" onclick="resetAll()">↺ RESET</button>
+
+<script>
+// ── STATE ────────────────────────────────────────────────────────────────────
+const state = {
+  strategy: null,
+  asset: null,
+  direction: null,
+  ema: null,
+  mid: null,
+  rsi: null,
+  price: null
+};
+
+const TC_ASSETS = ['BTC','ETH','AVAX','ADA','NEAR','LTC'];
+const BB_ASSETS = ['SOL','LINK','XRP','DOGE'];
+
+// ── STRATEGY ─────────────────────────────────────────────────────────────────
+function setStrategy(s) {
+  state.strategy = s;
+  state.asset = null;
+
+  // Toggle buttons
+  document.getElementById('btn-tc').className = 'strat-btn' + (s==='TC' ? ' active-tc' : '');
+  document.getElementById('btn-bb').className = 'strat-btn' + (s==='BB' ? ' active-bb' : '');
+
+  // Rebuild asset grid
+  const grid = document.getElementById('asset-grid');
+  const assets = s === 'TC' ? TC_ASSETS : BB_ASSETS;
+  grid.className = 'asset-grid ' + (s==='TC' ? 'tc' : 'bb');
+  grid.innerHTML = assets.map(a =>
+    `<button class="asset-btn" onclick="setAsset('${a}')">${a}</button>`
+  ).join('');
+
+  // Update mid field label
+  if (s === 'TC') {
+    document.getElementById('mid-label').textContent = '1H MACD — BLUE LINE IS...';
+    document.getElementById('mid-a').textContent = 'ABOVE ORANGE';
+    document.getElementById('mid-b').textContent = 'BELOW ORANGE';
+    document.getElementById('mid-hint').textContent = '';
+  } else {
+    document.getElementById('mid-label').textContent = '1H BB — PRICE...';
+    document.getElementById('mid-a').textContent = 'BROKE BAND';
+    document.getElementById('mid-b').textContent = 'INSIDE BANDS';
+    document.getElementById('mid-hint').textContent = 'BROKE = closed outside upper or lower band';
+  }
+
+  state.mid = null;
+  document.querySelectorAll('#mid-toggle .toggle-btn').forEach(b => b.classList.remove('above','below','broke','inside','selected'));
+  if (s === 'TC') {
+    document.getElementById('mid-a').classList.add('above');
+    document.getElementById('mid-b').classList.add('below');
+  } else {
+    document.getElementById('mid-a').classList.add('broke');
+    document.getElementById('mid-b').classList.add('inside');
+  }
+
+  buildPreview();
+}
+
+// ── ASSET ─────────────────────────────────────────────────────────────────────
+function setAsset(a) {
+  state.asset = a;
+  document.querySelectorAll('.asset-btn').forEach(b => {
+    b.classList.toggle('selected', b.textContent === a);
+  });
+  buildPreview();
+}
+
+// ── DIRECTION ─────────────────────────────────────────────────────────────────
+function setDir(d) {
+  state.direction = d;
+  document.querySelectorAll('.dir-btn').forEach(b => b.classList.remove('selected'));
+  const btn = d === 'LONG'
+    ? document.querySelector('.dir-btn.long')
+    : document.querySelector('.dir-btn.short');
+  btn.classList.add('selected');
+  buildPreview();
+}
+
+// ── EMA ───────────────────────────────────────────────────────────────────────
+function setEma(v) {
+  state.ema = v;
+  document.querySelectorAll('.toggle-row')[0].querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+  const btns = document.querySelectorAll('.toggle-row')[0].querySelectorAll('.toggle-btn');
+  btns[v==='above'?0:1].classList.add('selected');
+  buildPreview();
+}
+
+// ── MID (MACD or BB) ──────────────────────────────────────────────────────────
+function setMid(v) {
+  state.mid = v;
+  document.querySelectorAll('#mid-toggle .toggle-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById(v==='above'?'mid-a':'mid-b').classList.add('selected');
+  buildPreview();
+}
+
+// ── BUILD PREVIEW ─────────────────────────────────────────────────────────────
+function buildPreview() {
+  const rsi   = document.getElementById('rsi-input').value;
+  const price = document.getElementById('price-input').value;
+  state.rsi   = rsi || null;
+  state.price = price || null;
+
+  const el = document.getElementById('preview-content');
+  const copyBtn = document.getElementById('copy-btn');
+
+  if (!state.strategy || !state.asset || !state.direction || !state.ema || !state.mid || !rsi || !price) {
+    el.innerHTML = '<span class="preview-placeholder">Fill in all fields above...</span>';
+    copyBtn.disabled = true;
+    copyBtn.textContent = 'COPY MESSAGE';
+    copyBtn.className = 'copy-btn';
+    return;
+  }
+
+  let midText;
+  if (state.strategy === 'TC') {
+    midText = `MACD blue ${state.mid} orange`;
+  } else {
+    midText = state.mid === 'above' ? 'price broke band' : 'price inside bands';
+  }
+
+  const dirIcon = state.direction === 'LONG' ? '▲' : '▼';
+  const msg = `${state.strategy} ${state.asset} ${state.direction}\nEMA 4H: ${state.ema}\n${state.strategy === 'TC' ? 'MACD' : 'BB'}: ${state.mid}\nRSI: ${rsi}\nPrice: $${price}`;
+
+  el.innerHTML = `<div class="preview-text ready">${msg.replace(/\n/g,'<br>')}</div>`;
+  copyBtn.disabled = false;
+  copyBtn.textContent = 'COPY MESSAGE';
+  copyBtn.className = 'copy-btn';
+}
+
+// ── COPY ──────────────────────────────────────────────────────────────────────
+function copyMessage() {
+  const rsi   = document.getElementById('rsi-input').value;
+  const price = document.getElementById('price-input').value;
+
+  let midText;
+  if (state.strategy === 'TC') {
+    midText = `MACD blue ${state.mid} orange`;
+  } else {
+    midText = state.mid === 'above' ? 'price broke band' : 'price inside bands';
+  }
+
+  const msg = `${state.strategy} ${state.asset} ${state.direction}\nEMA 4H: ${state.ema}\n${state.strategy === 'TC' ? 'MACD' : 'BB'}: ${state.mid}\nRSI: ${rsi}\nPrice: $${price}`;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(msg).then(() => showCopied()).catch(() => fallbackCopy(msg));
+  } else {
+    fallbackCopy(msg);
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); showCopied(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function showCopied() {
+  const btn = document.getElementById('copy-btn');
+  btn.textContent = '✓ COPIED — PASTE INTO CLAUDE';
+  btn.className = 'copy-btn copied';
+  setTimeout(() => {
+    btn.textContent = 'COPY MESSAGE';
+    btn.className = 'copy-btn';
+  }, 2500);
+}
+
+
+// ── SPLASH ────────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 400);
+  }, 800);
+});
+
+// ── RESET ─────────────────────────────────────────────────────────────────────
+function resetAll() {
+  state.strategy = null;
+  state.asset = null;
+  state.direction = null;
+  state.ema = null;
+  state.mid = null;
+  state.rsi = null;
+  state.price = null;
+
+  document.getElementById('btn-tc').className = 'strat-btn';
+  document.getElementById('btn-bb').className = 'strat-btn';
+  document.querySelectorAll('.asset-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.dir-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('rsi-input').value = '';
+  document.getElementById('price-input').value = '';
+  document.getElementById('asset-grid').innerHTML = '';
+
+  document.getElementById('preview-content').innerHTML = '<span class="preview-placeholder">Fill in the fields above...</span>';
+  const btn = document.getElementById('copy-btn');
+  btn.disabled = true;
+  btn.textContent = 'COPY MESSAGE';
+  btn.className = 'copy-btn';
+}
+</script>
+</body>
+</html>
